@@ -1,0 +1,39 @@
+name: Job Alert Check
+
+permissions:
+  contents: write
+
+on:
+  schedule:
+    - cron: "0 3 * * *"   # once daily, ~8:30am IST
+  workflow_dispatch: {}      # allows manual trigger from GitHub UI
+
+jobs:
+  check-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run job check
+        env:
+          TINYFISH_API_KEY: ${{ secrets.TINYFISH_API_KEY }}
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GROQ_MODEL: openai/gpt-oss-20b
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python src/main.py
+
+      - name: Commit updated seen_jobs.json
+        run: |
+          git config user.name "job-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/seen_jobs.json data/serpapi_usage.json
+          git diff --staged --quiet || git commit -m "Update seen jobs"
+          git push

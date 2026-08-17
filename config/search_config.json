@@ -1,0 +1,46 @@
+{
+  "roles": [
+    "AI Engineer Intern",
+    "AI-assisted Software Engineer",
+    "Machine Learning Engineer Intern",
+    "SWE Intern",
+    "SDET / QA Automation Intern",
+    "Full Stack Developer Intern",
+    "Product Engineer Intern",
+    "Data Analyst Intern",
+    "Associate Software Engineer",
+    "Founding Engineer",
+    "Early-stage Startup Engineer Intern"
+  ],
+  "locations": ["Bangalore", "Bengaluru", "Remote", "India"],
+  "location_strict": false,
+  "experience_level": ["Internship", "Entry level"],
+  "posted_within_hours": 24,
+  "min_relevance_score": 8,
+  "exclude_keywords": [
+    "5+ years",
+    "7+ years",
+    "senior",
+    "staff engineer",
+    "lead engineer",
+    "principal",
+    "Hyderabad",
+    "Mumbai",
+    "Pune",
+    "Chennai",
+    "Delhi",
+    "Noida",
+    "Gurgaon",
+    "Kolkata"
+  ],
+  "prefer_product_companies": true,
+  "focus_areas": [
+    "AI/ML engineering and LLM applications",
+    "RAG systems and vector search",
+    "full-stack development (FastAPI, React)",
+    "QA automation and SDET with Playwright",
+    "AI-assisted software engineering",
+    "product engineering",
+    "data analysis"
+  ]
+}

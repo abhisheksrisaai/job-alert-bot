@@ -1,0 +1,59 @@
+ABHISHEK SRI SAAI K P
+abhishek.srisaai@gmail.com | +91 63644 36444 | github | in linkedin
+Professional Summary
+Final-year Electronics & Computer Engineering student at VIT Chennai with hands-on experience in AI-assisted software
+engineering, full-stack application development, Playwright test automation, and Retrieval-Augmented Generation (RAG)
+systems. Skilled at building scalable AI applications using FastAPI, React, LLMs, and vector databases, with practical
+exposure to Agile SDLC, CI/CD, and modern engineering workflows through internship and independent project work.
+Passionate about Software Engineering, AI Engineering, and intelligent automation, with a strong track record of shipping
+production-style tools rather than purely academic exercises.
+Education
+Vellore Institute of Technology, Chennai Bachelor of Technology in Electronics & Computer Engineering Experience
+Expected May 2027
+CGPA: 7.39 / 10
+Procify Innovations Pvt. Ltd. Software Development & QA Intern May 2026 – Jun 2026
+Bengaluru, India
+• Collaborated across two Agile SDLC sprint iterations with developers and QA engineers throughout development, testing, and
+release cycles.
+• DevelopedandmaintainedPlaywrightautomationscriptsusingJavaScriptforenterpriselow-codeapplications,improvingtesting
+efficiency and software quality.
+• Performed unit, functional, regression, and defect validation testing, debugging production issues and reviewing automation test
+cases.
+• Built a CAB Management System using Procify’s low-code platform while applying SQL/database fundamentals for workflow
+automation and backend data validation.
+• Leveraged GitHub Copilot, ChatGPT, and Claude for AI-assisted development, debugging, and prompt engineering, and worked
+with Git, Bitbucket, and CI/CD concepts.
+Projects
+ContractGuard – AI-Powered Contract Risk Analysis [Live Demo] [GitHub] Jul 2026
+FastAPI • React • Groq • RAG • Qdrant
+• Developedafull-stackapplicationusingFastAPI,React, GroqLLM,andQdrantVectorDatabaseforclause-levelcontract
+risk analysis and semantic document understanding.
+• ImplementedRetrieval-AugmentedGeneration(RAG)forintelligentclausecomparison, AI-poweredcontractQ&A,vector
+search, and contextual legal recommendations.
+• Built automated PDF extraction, AI-driven risk scoring, and downloadable report generation using PyMuPDF, pdfplumber,
+Jinja2, and WeasyPrint; deployed using Docker, Render, and Vercel.
+AutoHeal QA – AI-Powered Self-Healing Playwright Framework [GitHub] Jul 2026
+Playwright • TypeScript • Multi-Agent LLM Orchestration
+• Engineered a self-healing automation framework using Playwright and TypeScript, enabling autonomous recovery of broken
+UI locators during end-to-end testing.
+• Designed a multi-agent architecture consisting of Planner, Executor, and Healer agents integrated with DeepSeek, Kimi, and
+Qwen models, achieving 100% self-healing success with 95% average AI confidence.
+Resource-Efficient Transformer Architecture May 2025
+Python • PyTorch • Transformers
+• Applied pruning and quantization techniques to reduce model memory usage by 52% and improve CPU inference speed by
+33%.
+• BenchmarkedmodelperformanceagainstMobileBERTandDistilBERTtoevaluatedeploymentsuitabilityforresource-constrained
+environments.
+Technical Skills
+Languages: Java, Python, JavaScript, TypeScript, SQL
+Frameworks & Libraries: FastAPI, React, Playwright, PyTorch, Scikit-learn, XGBoost
+AI / LLM: OpenAI, Groq, Claude, Gemini, Llama, RAG, Prompt Engineering, Vector Search
+Databases: MySQL, Qdrant
+Cloud & DevOps: Microsoft Azure, AWS, Docker, Git, GitHub, GitHub Actions, Bitbucket, Render, Vercel, CI/CD
+Software Engineering: REST APIs, OOP, DSA, SDLC, Agile, Code Review, Unit/Functional/Regression Testing
+Developer Tools: VS Code, Postman, Power Apps, Power Automate
+Certifications
+• Microsoft Azure Fundamentals (AZ-900)
+• Microsoft Power Platform Fundamentals (PL-900)
+• Building with the Claude API • Claude Code in Action • AI Fluency Framework & Foundations • Introduction to Model
+Context Protocol (MCP)
