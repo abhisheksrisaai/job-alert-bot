@@ -119,7 +119,12 @@ def fetch_linkedin_jobs(search_config):
         print("Skipping LinkedIn/TinyFish fetch (SDK unavailable or SKIP_TINYFISH=1).")
         return []
 
-    client = TinyFish()
+    try:
+        client = TinyFish()
+    except Exception as exc:
+        print(f"Warning: TinyFish client init failed: {exc}; skipping LinkedIn.")
+        return []
+
     all_jobs = []
     location = _linkedin_location(search_config)
     tpr = _posted_tpr(search_config)
@@ -259,8 +264,10 @@ def fetch_serpapi_jobs(search_config):
 
 
 def fetch_all(search_config):
-    # TinyFish/LinkedIn is primary; SerpAPI supplements when quota allows.
     jobs = []
-    jobs += fetch_linkedin_jobs(search_config)
+    try:
+        jobs += fetch_linkedin_jobs(search_config)
+    except Exception as exc:
+        print(f"Warning: LinkedIn/TinyFish fetch aborted: {exc}; continuing with SerpAPI.")
     jobs += fetch_serpapi_jobs(search_config)
     return apply_search_filters(jobs, search_config)

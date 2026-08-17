@@ -6,7 +6,12 @@ permissions:
 on:
   schedule:
     - cron: "0 3 * * *"   # once daily, ~8:30am IST
-  workflow_dispatch: {}      # allows manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      use_linkedin:
+        description: "Enable TinyFish LinkedIn scrape (slow, often fails on GitHub runners)"
+        type: boolean
+        default: false
 
 jobs:
   check-jobs:
@@ -29,6 +34,8 @@ jobs:
           GROQ_MODEL: openai/gpt-oss-20b
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # TinyFish/LinkedIn often disconnects from GitHub IPs; SerpAPI is reliable on CI.
+          SKIP_TINYFISH: ${{ github.event_name == 'workflow_dispatch' && inputs.use_linkedin == true && '0' || '1' }}
         run: python src/main.py
 
       - name: Commit updated seen_jobs.json
