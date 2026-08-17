@@ -110,6 +110,10 @@ def _serpapi_rate_limited(response, data):
     return False
 
 
+def _roles_for_linkedin(search_config):
+    return search_config.get("linkedin_roles") or search_config["roles"]
+
+
 def fetch_linkedin_jobs(search_config):
     if not TINYFISH_AVAILABLE or os.environ.get("SKIP_TINYFISH") == "1":
         print("Skipping LinkedIn/TinyFish fetch (SDK unavailable or SKIP_TINYFISH=1).")
@@ -120,44 +124,57 @@ def fetch_linkedin_jobs(search_config):
     location = _linkedin_location(search_config)
     tpr = _posted_tpr(search_config)
     location_goal = _linkedin_location_goal(search_config)
+    roles = _roles_for_linkedin(search_config)
+    print(f"TinyFish: fetching {len(roles)} LinkedIn role searches...")
 
-    for role in search_config["roles"]:
+    for i, role in enumerate(roles, start=1):
         keywords = quote(role)
         url = (
             f"https://www.linkedin.com/jobs/search/?keywords={keywords}"
             f"&location={location}&f_TPR={tpr}"
         )
-        response = client.agent.run(
-            goal=(
-                "Extract all job postings visible on this page: title, company name, "
-                "location, posted date, and the direct apply/job link. "
-                f"{location_goal}"
-            ),
-            url=url,
-            browser_profile=BrowserProfile.STEALTH,
-            output_schema={
-                "type": "object",
-                "properties": {
-                    "jobs": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "title": {"type": "string"},
-                                "company": {"type": "string"},
-                                "location": {"type": "string"},
-                                "posted": {"type": "string"},
-                                "link": {"type": "string"},
+        print(f"TinyFish [{i}/{len(roles)}]: {role}")
+        try:
+            response = client.agent.run(
+                goal=(
+                    "Extract all job postings visible on this page: title, company name, "
+                    "location, posted date, and the direct apply/job link. "
+                    f"{location_goal}"
+                ),
+                url=url,
+                browser_profile=BrowserProfile.STEALTH,
+                output_schema={
+                    "type": "object",
+                    "properties": {
+                        "jobs": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {"type": "string"},
+                                    "company": {"type": "string"},
+                                    "location": {"type": "string"},
+                                    "posted": {"type": "string"},
+                                    "link": {"type": "string"},
+                                },
+                                "required": ["title", "company", "link"],
                             },
-                            "required": ["title", "company", "link"],
-                        },
-                    }
+                        }
+                    },
+                    "required": ["jobs"],
                 },
-                "required": ["jobs"],
-            },
-        )
-        if response.status.name == "COMPLETED":
-            all_jobs.extend(response.result.get("jobs", []))
+            )
+            if response.status.name == "COMPLETED":
+                jobs_found = response.result.get("jobs", [])
+                print(f"TinyFish [{i}/{len(roles)}]: {len(jobs_found)} jobs for '{role}'")
+                all_jobs.extend(jobs_found)
+            else:
+                print(
+                    f"Warning: TinyFish run incomplete for '{role}' "
+                    f"(status={response.status.name}); skipping."
+                )
+        except Exception as exc:
+            print(f"Warning: TinyFish failed for '{role}': {exc}; continuing.")
     return all_jobs
 
 

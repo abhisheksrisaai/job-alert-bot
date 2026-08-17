@@ -12,6 +12,14 @@
     "Founding Engineer",
     "Early-stage Startup Engineer Intern"
   ],
+  "linkedin_roles": [
+    "AI Engineer Intern",
+    "SDET / QA Automation Intern",
+    "Founding Engineer",
+    "Early-stage Startup Engineer Intern",
+    "Product Engineer Intern",
+    "SWE Intern"
+  ],
   "locations": ["Bangalore", "Bengaluru", "Remote", "India"],
   "location_strict": false,
   "experience_level": ["Internship", "Entry level"],
