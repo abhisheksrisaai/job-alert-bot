@@ -161,6 +161,19 @@ def fetch_linkedin_jobs(search_config):
     return all_jobs
 
 
+def get_job_link(job):
+    apply_options = job.get("apply_options", [])
+    if apply_options and apply_options[0].get("link"):
+        return apply_options[0]["link"]
+    related = job.get("related_links", [])
+    if related and related[0].get("link"):
+        return related[0]["link"]
+    title = job.get("title", "")
+    company = job.get("company_name", "")
+    query = f"{title} {company}".replace(" ", "+")
+    return f"https://www.google.com/search?q={query}&ibp=htl;jobs"
+
+
 def fetch_serpapi_jobs(search_config):
     import requests
 
@@ -174,6 +187,7 @@ def fetch_serpapi_jobs(search_config):
 
     all_jobs = []
     serp_location = "Bangalore, Karnataka, India"
+    sample_logged = False
 
     for role in search_config["roles"]:
         if usage["count"] >= SERPAPI_MONTHLY_LIMIT:
@@ -211,15 +225,17 @@ def fetch_serpapi_jobs(search_config):
             continue
 
         for job in data.get("jobs_results", []):
+            if not sample_logged:
+                print("SerpAPI sample job JSON:")
+                print(json.dumps(job, indent=2))
+                sample_logged = True
             all_jobs.append(
                 {
                     "title": job.get("title"),
                     "company": job.get("company_name"),
                     "location": job.get("location"),
                     "posted": job.get("detected_extensions", {}).get("posted_at", ""),
-                    "link": job.get("related_links", [{}])[0].get(
-                        "link", job.get("job_id", "")
-                    ),
+                    "link": get_job_link(job),
                 }
             )
     return all_jobs
