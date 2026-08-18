@@ -11,7 +11,7 @@ def main():
     with open("config/resume.txt") as f:
         resume_text = f.read()
 
-    print("Fetching jobs (Bangalore, product/AI focus)...")
+    print("Fetching jobs (strict Bangalore, ATS dorks + Google Jobs)...")
     all_jobs = fetch_all(search_config)
     print(f"Fetched {len(all_jobs)} jobs after location/keyword filters")
 

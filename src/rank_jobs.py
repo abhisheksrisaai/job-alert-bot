@@ -73,7 +73,10 @@ def _build_prompt(jobs_text, resume_text, search_config):
     )
 
     if location_strict:
-        location_rule = f"Location: STRICTLY {locations} only. Mark relevant=false for roles outside these locations."
+        location_rule = (
+            f"Location: STRICTLY {locations} on-site only. "
+            "Mark relevant=false for remote, hybrid, work-from-home, or roles in other Indian cities."
+        )
     else:
         location_rule = (
             f"Location: Prefer {locations}. Bangalore/Bengaluru is ideal; Remote and India-wide roles are also acceptable. "

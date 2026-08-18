@@ -20,18 +20,33 @@
     "Product Engineer Intern",
     "SWE Intern"
   ],
-  "locations": ["Bangalore", "Bengaluru", "Remote", "India"],
-  "location_strict": false,
+  "google_jobs_roles": [
+    "AI Engineer Intern",
+    "SDET / QA Automation Intern",
+    "Founding Engineer"
+  ],
+  "locations": ["Bangalore", "Bengaluru"],
+  "location_strict": true,
   "experience_level": ["Internship", "Entry level"],
   "posted_within_hours": 24,
   "min_relevance_score": 8,
+  "serpapi_max_searches_per_run": 4,
+  "serpapi_dorks_per_run": 3,
+  "serpapi_google_jobs_per_run": 1,
   "exclude_keywords": [
     "5+ years",
     "7+ years",
     "senior",
     "staff engineer",
     "lead engineer",
+    "lead ",
+    "manager",
     "principal",
+    "head of",
+    "architect",
+    "remote only",
+    "work from home",
+    "hybrid",
     "Hyderabad",
     "Mumbai",
     "Pune",
@@ -39,7 +54,11 @@
     "Delhi",
     "Noida",
     "Gurgaon",
-    "Kolkata"
+    "Kolkata",
+    "TCS",
+    "Infosys",
+    "Wipro",
+    "Cognizant"
   ],
   "prefer_product_companies": true,
   "focus_areas": [

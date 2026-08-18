@@ -1,0 +1,75 @@
+{
+  "role_core": "(\"intern\" OR \"internship\" OR \"SDE intern\" OR \"SWE intern\" OR \"AI/ML\" OR \"machine learning\" OR \"SDET\" OR \"QA automation\" OR \"associate SWE\" OR \"full-stack\" OR \"full stack\")",
+  "location_core": "(\"Bangalore\" OR \"Bengaluru\")",
+  "exclusions": "-remote -hybrid -Mumbai -Pune -Hyderabad -Chennai -Delhi -Gurgaon -Noida -senior -lead -manager -principal -head -architect -\"work from home\" -TCS -Infosys -Wipro -Cognizant",
+  "time_filter": "qdr:w",
+  "queries": [
+    {
+      "id": "greythr",
+      "name": "GreytHR",
+      "query": "site:greythr.com OR site:greythr.in"
+    },
+    {
+      "id": "keka",
+      "name": "Keka HR",
+      "query": "site:keka.com"
+    },
+    {
+      "id": "darwinbox",
+      "name": "Darwinbox",
+      "query": "site:darwinbox.com OR site:darwinbox.in"
+    },
+    {
+      "id": "pyjamahr",
+      "name": "Pyjama HR",
+      "query": "site:pyjamahr.com"
+    },
+    {
+      "id": "zoho_recruit",
+      "name": "Zoho Recruit",
+      "query": "site:recruit.zoho.in OR site:recruit.zoho.com"
+    },
+    {
+      "id": "hrone_peoplestrong",
+      "name": "HROne / PeopleStrong",
+      "query": "site:hrone.com OR site:peoplestrong.com"
+    },
+    {
+      "id": "greenhouse",
+      "name": "Greenhouse",
+      "query": "site:boards.greenhouse.io"
+    },
+    {
+      "id": "lever",
+      "name": "Lever",
+      "query": "site:jobs.lever.co"
+    },
+    {
+      "id": "ashby",
+      "name": "Ashby HQ",
+      "query": "site:jobs.ashbyhq.com"
+    },
+    {
+      "id": "workday",
+      "name": "Workday",
+      "query": "site:myworkdayjobs.com OR site:wd5.myworkdaysite.com"
+    },
+    {
+      "id": "smartrecruiters",
+      "name": "SmartRecruiters",
+      "query": "site:jobs.smartrecruiters.com"
+    },
+    {
+      "id": "hidden_careers_ats",
+      "name": "Hidden career pages (Keka/Darwinbox/GreytHR)",
+      "query": "inurl:careers OR inurl:jobs (\"powered by keka\" OR \"powered by darwinbox\" OR \"powered by greythr\" OR \"powered by zoho recruit\") (\"intern\" OR \"internship\" OR \"SWE intern\" OR \"AI/ML\" OR \"SDET\" OR \"QA automation\") (\"Bangalore\" OR \"Bengaluru\") -remote -Mumbai -Pune -Hyderabad -Chennai -Delhi -Gurgaon -Noida",
+      "full_query": true
+    },
+    {
+      "id": "hidden_ai_startups",
+      "name": "Hidden AI startup portals",
+      "query": "inurl:jobs OR inurl:careers (\"AI\" OR \"Machine Learning\" OR \"LLM\" OR \"GenAI\") (\"intern\" OR \"internship\" OR \"associate\") \"Bengaluru\" -remote -hybrid -senior -lead -manager",
+      "full_query": true
+    }
+  ]
+}
